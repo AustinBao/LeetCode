@@ -1,27 +1,25 @@
-nums = [1,2,3,4,5]
+nums = [1, 2, 3, 4, 5]
 moveright = 6
 storage = []
 
+
 def rotate(inputlist, rotate):
     i = 0
-    j = -1
     if rotate > len(inputlist):
         y = rotate % len(inputlist)
-        while i != y:
-            x = inputlist.pop(j)
-            storage.append(x)
-            i += 1
-        storage.reverse()
     else:
-        while i != rotate:
-            x = inputlist.pop(j)
-            storage.append(x)
-            i += 1
-        storage.reverse()
+        y = rotate
 
+    while i != y:
+        x = inputlist.pop(-1)
+        storage.append(x)
+        i += 1
+
+    storage.reverse()
     storage.extend(inputlist)
 
     return storage
+
 
 test = rotate(nums, moveright)
 print(test)

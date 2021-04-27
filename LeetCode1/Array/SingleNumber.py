@@ -1,14 +1,22 @@
-exampleList = [1, 3, 1, 4, 4]
+exampleList = [0]
+newDict = {}
 
-newlist = []
 
 def single(lista):
-    for n in lista:
-        if n not in newlist:
-            newlist.append(n)
+    newDict = {}
+
+    for i in range(len(lista)):
+        if lista[i] not in newDict:
+            newDict[lista[i]] = 1
         else:
-            newlist.remove(n)
-    return newlist
+            newDict[lista[i]] = -1
+
+    for j in newDict:
+        if newDict.get(j) == 1:
+            return j
+
+    return None
+
 
 test1 = single(exampleList)
 print(test1)

@@ -12,8 +12,7 @@ def reverse(num):
         j -= 1
 
     for ele in k:
-        if ele != 0:
-            newstr += ele
+       newstr += ele
 
     return int(newstr)
 
