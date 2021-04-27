@@ -8,5 +8,12 @@ def containDuplicate(nums):
                 return True
     return False
 
+<<<<<<< HEAD
+=======
+# Looks good,
+# A better, more efficient implementation is possible using a sorting algorithm (ignore that for now)
+# Try to create an algorithm that only uses one nested for loop, hint: you wont need to sort it.
+
+>>>>>>> b2082ddd913661efb22a91d4d55b7ffe15d45b9c
 User1 = containDuplicate(myList)
 print(User1)
