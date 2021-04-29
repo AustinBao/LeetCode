@@ -1,19 +1,23 @@
-s = "crack"
-t = "racck"
-
+s = "masck"
+t = "smack"
 
 def anagramvalid(str1, str2):
-
-    # this solution does not seem correct?
     dictionary = {}
-    for i in range(len(str1)):
-        if str1[i] not in dictionary:
-            dictionary[str1[i]] = 1
+    dictionary2 = {}
+
+    for i in str1:
+        if i not in dictionary:
+            dictionary[i] = 1
         else:
-            dictionary[str1[i]] + 1
+            dictionary[i] += 1
+    for i in str2:
+        if i not in dictionary2:
+            dictionary2[i] = 1
+        else:
+            dictionary2[i] += 1
+    if dictionary == dictionary2:
+        return True
+    return False
 
-    return dictionary
-
-
-test = anagramvalid(s, t)
+test = anagramvalid(s,t)
 print(test)
