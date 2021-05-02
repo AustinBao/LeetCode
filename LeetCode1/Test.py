@@ -1,2 +1,3 @@
-num = 1223
-print(len(num))
+new = ["t","o","m"]
+
+print(new[::-1])

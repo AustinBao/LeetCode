@@ -1,5 +1,5 @@
 s = "masck"
-t = "smack"
+t = "smac"
 
 def anagramvalid(str1, str2):
     dictionary = {}
