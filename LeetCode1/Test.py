@@ -1,3 +1,3 @@
-input = ["flower", "flour", "flow"]
-for i in range(0, len(input)):
-    print(len(input))
+test = [1,5,3,7]
+test.sort()
+print(test)
