@@ -12,6 +12,7 @@ class LinkedListNode:
     def set_next(self, inputnode):
         self.nextNode = inputnode
 
+
 class LinkedList:
     def __init__(self, head=None):
         self.head = head
