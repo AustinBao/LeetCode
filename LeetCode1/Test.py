@@ -1,24 +1,52 @@
-def split(inputstr):
-    inputList = []
-    for i in inputstr:
-        inputList.append(i)
+class Node:
 
-    outerList = []
-    maxValueOfJ = -1
-    if len(inputList) == 1:
-        return [inputList]
+    # Constructor to initialize the node object
+    def __init__(self, data):
+        self.data = data
+        self.next = None
 
-    for i in range(len(inputList)):
-        if i > maxValueOfJ:
-            innerList = [inputList[i]]
-            for j in range(i + 1, len(inputList)):
-                if inputList[i] == inputList[j]:
-                    innerList.append(inputList[j])
-                    maxValueOfJ = j
-                else:
-                    break
-            outerList.append(innerList)
 
-    return outerList
+class LinkedList:
 
-print(split("VXII"))
+    # Function to initialize head
+    def __init__(self):
+        self.head = None
+
+    # Function to reverse the linked list
+    def reverse(self):
+        prev = None
+        current = self.head
+        while (current is not None):
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
+        self.head = prev
+
+    # Function to insert a new node at the beginning
+    def push(self, new_data):
+        new_node = Node(new_data)
+        new_node.next = self.head
+        self.head = new_node
+
+    # Utility function to print the linked LinkedList
+    def printList(self):
+        element = []
+        temp = self.head
+        while (temp):
+            element.append(temp.data)
+            temp = temp.next
+        print(element)
+
+
+llist = LinkedList()
+llist.push(20)
+llist.push(4)
+llist.push(15)
+llist.push(85)
+
+print("Given Linked List")
+llist.printList()
+llist.reverse()
+print("\nReversed Linked List")
+llist.printList()

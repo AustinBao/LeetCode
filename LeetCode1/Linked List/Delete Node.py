@@ -1,45 +1,82 @@
-userlist = [4, 5, 1, 9]
+class Node(object):
 
-
-class LinkedListNode:
-    def __init__(self, value, nextNode=None):
-        self.value = value
-        self.nextNode = nextNode
+    def __init__(self, d, n=None):
+        self.data = d
+        self.next_node = n
 
     def get_next(self):
-        return self.nextNode
+        return self.next_node
 
-    def set_next(self, inputnode):
-        self.nextNode = inputnode
+    def set_next(self, n):
+        self.next_node = n
+
+    def get_data(self):
+        return self.data
+
+    def set_data(self, d):
+        self.data = d
+
+    def has_next(self):
+        if self.get_next() is None:
+            return False
+        return True
+
+    def to_string(self):
+        return "Node value: " + str(self.data)
 
 
-class LinkedList:
-    def __init__(self, head=None):
-        self.head = head
+class LinkedList(object):
 
-    def add(self, value):
-        node = LinkedListNode(value, self.head)
-        self.head = node
+    def __init__(self, r=None):
+        self.root = r
 
-    def delete(self, value):
-        current = self.head
-        previous = None
+    def add(self, d):
+        new_node = Node(d, self.root)
+        self.root = new_node
 
-        while current is not None:
-            if current.get_next() == value:
-                if previous is not None:
-                    previous.set_next(current.get_next())
+    def add_node(self, n):
+        n.set_next(self.root)
+        self.root = n
+
+    def remove(self, d):
+        this_node = self.root
+        prev_node = None
+
+        while this_node is not None:
+            if this_node.get_data() == d:
+                if prev_node is not None:
+                    prev_node.set_next(this_node.get_next())
                 else:
-                    self.head = current.get_next()
-                return True
+                    self.root = this_node.get_next()
+                return True  # data removed
             else:
-                previous = current
-                current = current.get_next()
-        return False
+                prev_node = this_node
+                this_node = this_node.get_next()
+        return False  # data not found
+
+    def print_list(self):
+        print("Print List..........")
+        if self.root is None:
+            return
+        this_node = self.root
+        print(this_node.to_string())
+        while this_node.has_next():
+            this_node = this_node.get_next()
+            print(this_node.to_string())
 
 
-me = LinkedList()
-me.add(2)
-me.add(5)
-me.add(3)
-me.delete(5)
+
+def main():
+    myList = LinkedList()
+    myList.add(5)
+    myList.add(9)
+    myList.add(3)
+    myList.add(8)
+    myList.add(9)
+    myList.print_list()
+    myList.remove(8)
+    myList.remove(9)
+    myList.print_list()
+
+
+main()

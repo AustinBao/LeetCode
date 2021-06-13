@@ -9,7 +9,6 @@ def RomanToInteger(roman):
         "M": 1000,
     }
     total = 0
-    current = 0
     previous = 0
 
     for i in range(len(roman)):
