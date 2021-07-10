@@ -48,7 +48,6 @@ class LinkedList:
 
 
 mine = LinkedList()
-mine.display()
 mine.add(1)
 mine.add(4)
 mine.display()
