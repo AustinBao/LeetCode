@@ -60,6 +60,7 @@ class TestPalindrome(TestCase):
         me = LinkedList()
         self.assertEqual(first="Is palindrome", second=me.palindrome())
 
+
     def test_odd(self):
         me = LinkedList()
         me.add(1)
