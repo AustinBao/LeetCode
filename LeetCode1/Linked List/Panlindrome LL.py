@@ -29,23 +29,23 @@ class LinkedList:
 
     def palindrome(self):
         # Add all elements in a linked list to a list
-        storage = []
-        start = self.head
-        while start is not None:
-            storage.append(start.data)
-            dummy = start
-            start = dummy.next
-        storage.remove(None)
+        llist_values = []
+        first_node = self.head
+        while first_node is not None:
+            llist_values.append(first_node.data)
+            temp = first_node
+            first_node = temp.next
+        llist_values.remove(None)
 
         # Check if list is empty or not
-        if len(storage) == 0:
+        if len(llist_values) == 0:
             return "Is palindrome"
 
         # itterates through list to prove it is a palindrome
         j = 0
         k = -1
-        for i in storage:
-            if storage[j] != storage[k]:
+        for elements in llist_values:
+            if llist_values[j] != llist_values[k]:
                 return "Not palindrome"
             else:
                 j += 1
@@ -58,6 +58,11 @@ class TestPalindrome(TestCase):
 
     def test_empty(self):
         me = LinkedList()
+        self.assertEqual(first="Is palindrome", second=me.palindrome())
+
+    def test_one(self):
+        me = LinkedList()
+        me.add(1)
         self.assertEqual(first="Is palindrome", second=me.palindrome())
 
 

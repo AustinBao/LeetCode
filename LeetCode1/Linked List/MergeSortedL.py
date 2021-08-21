@@ -28,41 +28,43 @@ class LinkedList:
         print(elems)
 
     def mergesorted(self, llist):
-
-        list1 = self.head
-        list2 = llist.head
-        set = None
+        first_head_value = self.head
+        second_head_value = llist.head
+        final_list = []
 
         # Check if a list is empty. If it is, return the other list
-        if not list1:
-            return list2
-        if not list2:
-            return list1
+        if not first_head_value.data:
+            return llist
+        if not second_head_value.data:
+            return self
         # Set variables to nodes and compare the variable nodes value.
-        if list1 and list2:
-            if list1.data <= list2.data:
-                set = list1
-                list1 = set.next
-            else:
-                set = list2
-                list2 = set.next
-            newhead = set
-        # Actually connecting and linking the nodes in the correct order
-        while list1 and list2:
-            if list1.data <= list2.data:
-                set.next = list1
-                set = list1
-                list1 = set.next
-            else:
-                set.next = list2
-                set = list2
-                list2 = set.next
-        if not list1:
-            set.next = list2
-        if not list2:
-            set.next = list1
+        if first_head_value.data <= second_head_value.data:
+            smallest_temp_value = first_head_value
+            first_head_value = smallest_temp_value.next
+        else:
+            smallest_temp_value = second_head_value
+            second_head_value = smallest_temp_value.next
+        final_list.append(smallest_temp_value)
 
-        return newhead
+        # Actually connecting and linking the nodes in the correct order
+        while first_head_value and second_head_value:
+            if first_head_value.data <= second_head_value.data:
+                smallest_temp_value.next = first_head_value
+                smallest_temp_value = first_head_value
+                first_head_value = smallest_temp_value.next
+                final_list.append(smallest_temp_value.data)
+            else:
+                smallest_temp_value.next = second_head_value
+                smallest_temp_value = second_head_value
+                second_head_value = smallest_temp_value.next
+                final_list.append(smallest_temp_value.data)
+
+        if first_head_value is None:
+            smallest_temp_value.next = second_head_value
+        if second_head_value is None:
+            smallest_temp_value.next = first_head_value
+
+        return final_list
 
 
 class TestMergeSort(TestCase):
@@ -74,21 +76,70 @@ class TestMergeSort(TestCase):
         list1.add(3)
         list1.add(6)
         list1.add(7)
-        list1.display()
-        self.assertEqual(first=[1, 3, 6, 7], second=list1.mergesorted(list2))
 
-    def test_OneShorter(self):
-        lista = LinkedList()
-        listb = LinkedList()
-        lista.add(1)
-        lista.add(3)
-        lista.add(6)
-        lista.add(7)
-        listb.add(2)
-        listb.add(3)
-        lista.display()
-        listb.display()
-        self.assertEqual(first=[1, 2, 3, 3, 6, 7], second=lista.mergesorted(listb))
+        expected_merged_list = LinkedList()
+        expected_merged_list.add(1)
+        expected_merged_list.add(3)
+        expected_merged_list.add(6)
+        expected_merged_list.add(7)
+
+        self.assertTrue(self.assert_two_lists_equal(expected_merged_list, list1.mergesorted(list2)))
+
+    def test_SameLength(self):
+        list1 = LinkedList()
+        list2 = LinkedList()
+
+        list1.add(1)
+        list1.add(2)
+        list1.add(3)
+        list2.add(3)
+        list2.add(6)
+        list2.add(7)
+
+        expected_merged_list = LinkedList()
+        expected_merged_list.add(1)
+        expected_merged_list.add(2)
+        expected_merged_list.add(3)
+        expected_merged_list.add(3)
+        expected_merged_list.add(6)
+        expected_merged_list.add(7)
+
+        self.assertTrue(self.assert_two_lists_equal(expected_merged_list, list1.mergesorted(list2)))
+
+    def test_DiffLength(self):
+        list1 = LinkedList()
+        list2 = LinkedList()
+
+        list1.add(1)
+        list2.add(3)
+        list2.add(6)
+        list2.add(7)
+
+        expected_merged_list = LinkedList()
+        expected_merged_list.add(1)
+        expected_merged_list.add(3)
+        expected_merged_list.add(6)
+        expected_merged_list.add(7)
+
+        self.assertTrue(self.assert_two_lists_equal(expected_merged_list, list1.mergesorted(list2)))
+
+    def test_TwoEmpty(self):
+        list1 = LinkedList()
+        list2 = LinkedList()
+
+        expected_merged_list = LinkedList()
+
+        self.assertTrue(self.assert_two_lists_equal(expected_merged_list, list1.mergesorted(list2)))
+
+    def assert_two_lists_equal(self, list_a: LinkedList, list_b: LinkedList):
+        list_a_head = list_a.head
+        list_b_head = list_b.head
+        while not list_a_head and list_b_head:
+            if list_a_head.data != list_b_head.data:
+                return False
+            list_a_head = list_a_head.next
+            list_b_head = list_b_head.next
+        return True
 
 
 if __name__ == '__main__':
