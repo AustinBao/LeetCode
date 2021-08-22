@@ -26,14 +26,19 @@ class Node:
 
     def MaxDepth(self, root, depth=0):
         # Checks if there is a root in the tree
-        if root == None:
+        if root is None:
             return depth
-        # Checks the number of levels the left side of the tree ends at
-        left_branch = self.MaxDepth(root.left, depth + 1)
-        # Checks the number of levels the right side of the tree ends at
-        right_branch = self.MaxDepth(root.right, depth + 1)
-        # Determines which side went deeper using max() function
-        return max(left_branch, right_branch)
+        children = [root.left, root.right]
+        children_depths = []
+        for child in children:
+            children_depths.append(self.MaxDepth(child, depth + 1))
+        return max(children_depths)
+
+    # Checks the number of levels the left side of the tree ends at
+    # left_branch = self.MaxDepth(root.left, depth + 1)
+    # Checks the number of levels the right side of the tree ends at
+    # right_branch = self.MaxDepth(root.right, depth + 1)
+    # Determines which side went deeper using max() function
 
 
 class TestMaxDepth(TestCase):
