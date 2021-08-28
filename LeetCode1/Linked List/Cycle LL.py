@@ -33,7 +33,7 @@ class LinkedList:
         current_node.next = node
 
 
-def check_if_cycle_exists(linked_list, node_to_search_for, head: Node):
+def check_if_cycle_exists(linked_list, head: Node):
     check_set = set()
     current_node = linked_list.head
     while current_node:
