@@ -34,12 +34,6 @@ class Node:
             children_depths.append(self.MaxDepth(child, depth + 1))
         return max(children_depths)
 
-    # Checks the number of levels the left side of the tree ends at
-    # left_branch = self.MaxDepth(root.left, depth + 1)
-    # Checks the number of levels the right side of the tree ends at
-    # right_branch = self.MaxDepth(root.right, depth + 1)
-    # Determines which side went deeper using max() function
-
 
 class TestMaxDepth(TestCase):
     # A binary tree must have a root so there are no further cases where there are no roots
