@@ -25,7 +25,6 @@ class Node:
             self.data = data
 
     def MaxDepth(self, root, depth=0):
-        # Checks if there is a root in the tree
         if root is None:
             return depth
         children = [root.left, root.right]

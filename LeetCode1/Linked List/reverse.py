@@ -1,3 +1,7 @@
+import unittest
+from unittest import TestCase
+
+
 class Node:
 
     # Constructor to initialize the node object
@@ -24,7 +28,7 @@ class LinkedList:
         self.head = prev
 
     # Function to insert a new node at the beginning
-    def push(self, new_data):
+    def add(self, new_data):
         new_node = Node(new_data)
         new_node.next = self.head
         self.head = new_node
@@ -36,17 +40,18 @@ class LinkedList:
         while (temp):
             element.append(temp.data)
             temp = temp.next
-        print(element)
+        return element
 
 
-llist = LinkedList()
-llist.push(20)
-llist.push(4)
-llist.push(15)
-llist.push(85)
+class TestCase(TestCase):
 
-print("Given Linked List")
-llist.printList()
-llist.reverse()
-print("\nReversed Linked List")
-llist.printList()
+    def test_reverse_4_length_LL(self):
+        llist = LinkedList()
+        llist.add(20)
+        llist.add(4)
+        llist.add(15)
+        llist.add(85)
+        llist.reverse()
+        self.assertEqual(first=[20, 4, 15, 85], second=llist.printList())
+
+

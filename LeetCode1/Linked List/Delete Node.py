@@ -1,3 +1,7 @@
+import unittest
+from unittest import TestCase
+
+
 class Node(object):
 
     def __init__(self, d, n=None):
@@ -65,18 +69,18 @@ class LinkedList(object):
             print(this_node.to_string())
 
 
+# How would I even write a unit test for a Linked List? I wrote a temp. variable that stored the current LL before we removed an item.
+class TestDeleteNode(TestCase):
 
-def main():
-    myList = LinkedList()
-    myList.add(5)
-    myList.add(9)
-    myList.add(3)
-    myList.add(8)
-    myList.add(9)
-    myList.print_list()
-    myList.remove(8)
-    myList.remove(9)
-    myList.print_list()
+    def test_normal(self):
+        myList = LinkedList()
+        myList.add(5)
+        myList.add(9)
+        myList.add(3)
+        before_deletion = myList
+        myList.remove(9)
+        self.assertEqual(first=myList, second=before_deletion)
 
 
-main()
+if __name__ == '__main__':
+    unittest.main()

@@ -1,4 +1,5 @@
 import unittest
+import random
 from unittest import TestCase
 
 
@@ -90,21 +91,42 @@ class TestMergeSort(TestCase):
         list2 = LinkedList()
 
         list1.add(1)
-        list1.add(2)
-        list1.add(3)
+        list1.add(8)
+        list1.add(5)
         list2.add(3)
-        list2.add(6)
+        list2.add(5)
         list2.add(7)
 
         expected_merged_list = LinkedList()
         expected_merged_list.add(1)
-        expected_merged_list.add(2)
         expected_merged_list.add(3)
-        expected_merged_list.add(3)
-        expected_merged_list.add(6)
+        expected_merged_list.add(8)
+        expected_merged_list.add(5)
         expected_merged_list.add(7)
+        expected_merged_list.add(8)
 
+        x = list1.mergesorted(list2)
+        elems = []
+        cur = x.head
+        while cur.next != None:
+            cur = cur.next
+            elems.append(cur.data)
+        print(elems)
+        # self.assertTrue(1, 2, "wrong")
         self.assertTrue(self.assert_two_lists_equal(expected_merged_list, list1.mergesorted(list2)))
+
+    def test_BigData(self):
+        list1 = LinkedList()
+        list2 = LinkedList()
+
+        for i in range(1, 10000):
+            list2.add(i)
+            list1.add(i + i)
+
+        list1.display()
+        list2.display()
+
+        list2.mergesorted(list1).display()
 
     def test_DiffLength(self):
         list1 = LinkedList()

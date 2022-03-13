@@ -1,4 +1,4 @@
-haystack = "helo"
+haystack = "zhelo"
 needle = ""
 
 def haystackindex(stack, needle):

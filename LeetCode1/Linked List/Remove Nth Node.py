@@ -1,3 +1,6 @@
+import unittest
+from unittest import TestCase
+
 class node:
     def __init__(self, data=None):
         self.data = data
@@ -45,13 +48,18 @@ class LinkedList:
             curindex += 1
 
 
+class TestRemoveNthNode(TestCase):
+
+    def test_index_0(self):
+        mine = LinkedList()
+        mine.add(1)
+        mine.add(4)
+        mine.add(2)
+        mine.add(3)
+        save = mine
+        mine.erase(0)
+        self.assertEqual(first=save, second=mine)
 
 
-mine = LinkedList()
-mine.add(1)
-mine.add(4)
-mine.add(2)
-mine.add(3)
-mine.display()
-mine.erase(0)
-mine.display()
+if __name__ == '__main__':
+    unittest.main()
