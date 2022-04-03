@@ -16,6 +16,18 @@ class TestMostProfitSubArray(TestCase):
         list_of_nums = [0]
         self.assertEqual(first=0, second=maxSubArraySum(list_of_nums))
 
+    def test_two_number_array(self):
+        list_of_nums = [-1, 100]
+        self.assertEqual(first=100, second=maxSubArraySum(list_of_nums))
+
+    def test_positive_numbers_array(self):
+        list_of_nums = [1, 3, 5, 7]
+        self.assertEqual(first=16, second=maxSubArraySum(list_of_nums))
+
+    def test_negative_numbers_array(self):
+        list_of_nums = [-1, -3, -5, -7]
+        self.assertEqual(first=-1, second=maxSubArraySum(list_of_nums))
+
     def test_regular_array(self):
         self.assertEqual(first=1000, second=maxSubArraySum([0, -10, 11, -200, 1000]))
 
