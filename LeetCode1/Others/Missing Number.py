@@ -18,6 +18,11 @@ class TestMissingNum(TestCase):
         result = missingNumberInRange(list_insert)
         self.assertEqual(first=2, second=result)
 
+    def test_two_terms_zero_last(self):
+        list_insert = [1, 0]
+        result = missingNumberInRange(list_insert)
+        self.assertEqual(first=2, second=result)
+
     def test_multiple_terms(self):
         list_insert = [3, 0, 4, 1, 7, 2, 6]
         result = missingNumberInRange(list_insert)
