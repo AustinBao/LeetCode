@@ -8,4 +8,9 @@ def sumOfFourAndFives(num):
     return num_of_sums
 
 
-print(sumOfFourAndFives(40))
+print(sumOfFourAndFives(7))
+
+print(sumOfFourAndFives(80))
+
+
+
