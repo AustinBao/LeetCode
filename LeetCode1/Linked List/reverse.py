@@ -43,7 +43,7 @@ class LinkedList:
         return element
 
 
-class TestCase(TestCase):
+class TestReverse(TestCase):
 
     def test_reverse_4_length_LL(self):
         llist = LinkedList()
