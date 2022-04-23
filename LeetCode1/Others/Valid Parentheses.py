@@ -3,20 +3,29 @@ def parenthesesValid(str_of_parentheses):
     for items in str_of_parentheses:
         list_of_parentheses.append(items)
 
-    parentheses_count = dict()
-    for parentheses in list_of_parentheses:
-        parentheses_count[parentheses] = parentheses_count.get(parentheses, 0) + 1
-
-    if parentheses_count.get("(") != parentheses_count.get(")"):
+    op_brackets = list_of_parentheses[0::2]
+    cl_brackets = list_of_parentheses[1::2]
+    if len(op_brackets) != len(cl_brackets):
         return False
-    if parentheses_count.get("{") != parentheses_count.get("}"):
-        return False
-    if parentheses_count.get("[") != parentheses_count.get("]"):
-        return False
-
+    else:
+        index = 0
+        while index != len(op_brackets):
+            if op_brackets[index] == "(":
+                if cl_brackets[index] != ")":
+                    return False
+            if op_brackets[index] == "[":
+                if cl_brackets[index] != "]":
+                    return False
+            if op_brackets[index] == "{":
+                if cl_brackets[index] != "}":
+                    return False
+            index += 1
     return True
 
 
+print(parenthesesValid("("))
 print(parenthesesValid("(}"))
+print(parenthesesValid("({)}"))
+print(parenthesesValid("(){}"))
+print(parenthesesValid("(){}[][][](){}{)"))
 
-print(parenthesesValid("()[]{}"))

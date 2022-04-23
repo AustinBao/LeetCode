@@ -1,11 +1,7 @@
-next_row = []
-a_list = [1,1]
-a_list.insert(0, 0)
-a_list.insert(len(a_list), 0)
-
-for i in range(0, len(a_list) - 1):
-    j = i + 1
-    next_row.append(a_list[i] + a_list[j])
-
-actual = [next_row]
-print(actual)
+our_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+chunked_list = list()
+chunk_size = 3
+for i in range(0, len(our_list), chunk_size):
+    chunked_list.append(our_list[i:i+chunk_size])
+print(chunked_list)
+# Returns: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11]]
