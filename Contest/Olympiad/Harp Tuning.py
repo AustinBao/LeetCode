@@ -17,4 +17,4 @@ def harpTuning(instructions):
     return str1.join(list_of_words)
 
 
-print(harpTuning("ABD+4FCD-5"))
+print(harpTuning("ABD+4FCD-5YUWZX+1"))
