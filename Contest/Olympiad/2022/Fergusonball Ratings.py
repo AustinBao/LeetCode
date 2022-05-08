@@ -1,3 +1,9 @@
+# https://www.cemc.uwaterloo.ca/contests/computing/2022/ccc/juniorEF.pdf
+
+import unittest
+from unittest import TestCase
+
+
 def fergusonball(separate_players, scores_and_fouls):
     if separate_players == 0:
         return "0-"
@@ -22,8 +28,24 @@ def fergusonball(separate_players, scores_and_fouls):
         return "{}-".format(counter)
 
 
-print(fergusonball(4, [12, 4, 10, 3, 9, 1, 18, 2]))
+class TestFerguson(TestCase):
 
-print(fergusonball(0, []))
+    def test_normalamountplayers_starteam(self):
+        self.assertEqual(first="4+", second=fergusonball(4, [12, 4, 10, 3, 9, 1, 18, 2]))
 
-print(fergusonball(1, [9, 1]))
+    def test_normalamountplayers_nostar(self):
+        self.assertEqual(first="0-", second=fergusonball(4, [2, 1, 10, 7, 9, 8, 17, 16]))
+
+    def test_noplayers_nostar(self):
+        self.assertEqual(first="0-", second=fergusonball(0, []))
+
+    def test_oneplayer_star(self):
+        self.assertEqual(first="1+", second=fergusonball(1, [9, 1]))
+
+    def test_oneplayer_nostar(self):
+        self.assertEqual(first="0-", second=fergusonball(1, [1, 0]))
+
+
+
+if __name__ == '__main__':
+    unittest.main()

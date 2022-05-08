@@ -1,3 +1,5 @@
+
+
 def silentAuction(numofbids, nameandpricelist):
     prices = []
     names = []
