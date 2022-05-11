@@ -46,6 +46,5 @@ class TestFerguson(TestCase):
         self.assertEqual(first="0-", second=fergusonball(1, [1, 0]))
 
 
-
 if __name__ == '__main__':
     unittest.main()

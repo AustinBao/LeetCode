@@ -1,7 +1,7 @@
 def squarePool(size, num_trees, coord_trees):
     grid = []
-    for x in range(1, size):
-        for y in range(1, size):
+    for x in range(1, size+1):
+        for y in range(1, size+1):
             grid.append([x, y])
 
     sizes = set()

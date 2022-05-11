@@ -15,9 +15,22 @@ def harpTuning(instructions):
             continue
         tunedlist.append(elements)
 
+    listofstrings = makeStringList(tunedlist)
+    listoftuning = makeTuneList(tunedlist)
+    listofnumbers = makeNumberList(tunedlist)
+
+    final = []
+    for index in range(0, len(listofstrings)):
+        final.append("{} {} {}".format(listofstrings[index], listoftuning[index], listofnumbers[index]))
+
+    str1 = " "
+    return str1.join(final)
+
+
+def makeStringList(strtolist):
     substrings = ""
     listofstrings = []
-    for i in tunedlist:
+    for i in strtolist:
         if i == "tighten" or i == "loosen":
             listofstrings.append(substrings)
             substrings = ""
@@ -26,27 +39,26 @@ def harpTuning(instructions):
                 substrings += i
         else:
             continue
+    return listofstrings
 
+def makeTuneList(strtolist):
     listoftuning = []
-    for i in tunedlist:
+    for i in strtolist:
         if i == "tighten":
             listoftuning.append("tighten")
         if i == "loosen":
             listoftuning.append("loosen")
+    return listoftuning
 
+def makeNumberList(strtolist):
     listofnumbers = []
-    for i in tunedlist:
+    for i in strtolist:
         if i.isdigit():
             listofnumbers.append(i)
         else:
             continue
+    return listofnumbers
 
-    final = []
-    for index in range(0, len(listofstrings)):
-        final.append("{} {} {}".format(listofstrings[index], listoftuning[index], listofnumbers[index]))
-
-    str1 = " "
-    return str1.join(final)
 
 
 class TestHarpTune(TestCase):
@@ -64,3 +76,4 @@ class TestHarpTune(TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
