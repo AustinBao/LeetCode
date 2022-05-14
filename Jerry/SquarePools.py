@@ -36,6 +36,13 @@ def isTreeHit(poolTile, size_increase, tree_coord):
             filled_coords.append([i, j])
     return filled_coords.__contains__(tree_coord)
 
+def ceilingandright(point, ceilingpoint, rightpoint):
+    largestcubesize = []
+    largestcubesize.append(rightpoint[0] - point[0] - 1)
+    largestcubesize.append(point[1] - ceilingpoint[1])
+    return min(largestcubesize)
+
+
 
 print(squarePool(4, 2, [[2, 2], [3, 2]]))
 print(squarePool(5, 1, [[2, 4]]))
