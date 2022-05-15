@@ -36,6 +36,7 @@ def isTreeHit(poolTile, size_increase, tree_coord):
             filled_coords.append([i, j])
     return filled_coords.__contains__(tree_coord)
 
+
 def ceilingandright(point, ceilingpoint, rightpoint):
     largestcubesize = []
     largestcubesize.append(rightpoint[0] - point[0] - 1)
@@ -43,9 +44,50 @@ def ceilingandright(point, ceilingpoint, rightpoint):
     return min(largestcubesize)
 
 
+def checkMaxSquareOnRight(point, trees, size):
+    treesToTheRight = []
+    for tree in trees:
+        if tree[0] >= point[0]:
+            treesToTheRight.append(tree)
 
-print(squarePool(4, 2, [[2, 2], [3, 2]]))
-print(squarePool(5, 1, [[2, 4]]))
-print(squarePool(15, 8, [[4, 7], [4, 1], [14, 11], [10, 6], [13, 4], [4, 10], [10, 3], [9, 14]]))
+    maxDistanceToRight = size - point[0] + 1
+    startX = point[0]
+    startY = 1
+    endY = size
+
+    for poolSize in range(maxDistanceToRight, 0, -1):
+        for y in range(startY, endY + 1 - poolSize):
+            if checkIfSquareFit(poolSize, startX, y, treesToTheRight):
+                return poolSize
+
+    return None
+
+
+def checkIfSquareFit(squareSize, startX, startY, treesToRight):
+    endX = startX + squareSize - 1
+    endY = startY + squareSize - 1
+    for tree in treesToRight:
+        treeX = tree[0]
+        treeY = tree[1]
+        if (startX <= treeX <= endX) and (startY <= treeY <= endY):
+            return False
+    return True
+
+
+print(checkMaxSquareOnRight([2, 4], [[4, 2]], 7))
+
+print(checkMaxSquareOnRight([2, 4], [[4, 2], [6, 3], [5, 5], [5, 6], [1, 4]], 7))
+
+print(checkMaxSquareOnRight([2, 4], [[6, 3], [5, 5], [5, 6], [1, 4]], 7))
+
+print(checkMaxSquareOnRight([2, 4], [[3, 4], [6, 3], [5, 5], [5, 6], [1, 4]], 7))
+
+print(checkMaxSquareOnRight([2, 4], [[3, 4], [3, 6], [4, 2], [6, 3], [5, 5], [5, 6], [1, 4]], 7))
+
+
+
+#print(squarePool(4, 2, [[2, 2], [3, 2]]))
+#print(squarePool(5, 1, [[2, 4]]))
+#print(squarePool(15, 8, [[4, 7], [4, 1], [14, 11], [10, 6], [13, 4], [4, 10], [10, 3], [9, 14]]))
 
 
