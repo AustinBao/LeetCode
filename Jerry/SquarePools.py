@@ -57,16 +57,16 @@ def checkMaxSquareOnRight(point, trees, size):
 
     for poolSize in range(maxDistanceToRight, 0, -1):
         for y in range(startY, endY + 1 - poolSize):
-            if checkIfSquareFit(poolSize, startX, y, treesToTheRight):
+            if doesSquareFit(poolSize, startX, y, treesToTheRight):
                 return poolSize
 
     return None
 
 
-def checkIfSquareFit(squareSize, startX, startY, treesToRight):
+def doesSquareFit(squareSize, startX, startY, trees):
     endX = startX + squareSize - 1
     endY = startY + squareSize - 1
-    for tree in treesToRight:
+    for tree in trees:
         treeX = tree[0]
         treeY = tree[1]
         if (startX <= treeX <= endX) and (startY <= treeY <= endY):
@@ -83,8 +83,6 @@ print(checkMaxSquareOnRight([2, 4], [[6, 3], [5, 5], [5, 6], [1, 4]], 7))
 print(checkMaxSquareOnRight([2, 4], [[3, 4], [6, 3], [5, 5], [5, 6], [1, 4]], 7))
 
 print(checkMaxSquareOnRight([2, 4], [[3, 4], [3, 6], [4, 2], [6, 3], [5, 5], [5, 6], [1, 4]], 7))
-
-
 
 #print(squarePool(4, 2, [[2, 2], [3, 2]]))
 #print(squarePool(5, 1, [[2, 4]]))
