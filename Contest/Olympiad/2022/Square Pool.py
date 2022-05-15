@@ -1,44 +1,56 @@
-def squarePool(size, num_trees, coord_trees):
-    grid = []
-    for x in range(1, size+1):
-        for y in range(1, size+1):
-            grid.append([x, y])
+# def squarePool(size, num_trees, coord_trees):
+#     grid = []
+#     for x in range(1, size + 1):
+#         for y in range(1, size + 1):
+#             grid.append([x, y])
+#
+#     sizes = set()
+#     for poolTile in grid:
+#         startX = poolTile[0]
+#         startY = poolTile[1]
+#         size_to_increase = 1
+#         blocked = False
+#         while not blocked:
+#             if (startX + size_to_increase > size) or (startY + size_to_increase > size):
+#                 break
+#             for tree_coord in coord_trees:
+#                 if poolTile == tree_coord:
+#                     blocked = True
+#                     break
+#                 if isTreeHit(poolTile, size_to_increase, tree_coord):
+#                     blocked = True
+#                     break
+#             if not blocked:
+#                 size_to_increase += 1
+#         sizes.add(size_to_increase)
+#
+#     return max(sizes)
 
-    sizes = set()
-    for poolTile in grid:
-        startX = poolTile[0]
-        startY = poolTile[1]
-        size_to_increase = 1
-        blocked = False
-        while not blocked:
-            if (startX + size_to_increase > size) or (startY + size_to_increase > size):
-                break
-            for tree_coord in coord_trees:
-                if poolTile == tree_coord:
-                    blocked = True
-                    break
-                if isTreeHit(poolTile, size_to_increase, tree_coord):
-                    blocked = True
-                    break
-            if not blocked:
-                size_to_increase += 1
-        sizes.add(size_to_increase)
+def ceilingandright(point, other_tree_coords):
+    xscale = []
+    yscale = []
 
-    return max(sizes)
+    for trees in other_tree_coords:
+        xdiff = trees[0] - point[0] - 1
+        if xdiff <= 0:
+            continue
+        ydiff = point[1] - trees[1] - 1
+        xscale.append(xdiff)
+        yscale.append(ydiff)
 
+    xscale.sort()
+    xscale.reverse()
+    yscale.sort()
+    yscale.reverse()
 
-def isTreeHit(poolTile, size_increase, tree_coord):
-    startX = poolTile[0]
-    startY = poolTile[1]
-    filled_coords = []
-    for i in range(startX, startX + size_increase + 1):
-        for j in range(startY, startY + size_increase + 1):
-            filled_coords.append([i, j])
-    return filled_coords.__contains__(tree_coord)
+    k = 0
+    possiblesquare = []
+    for yincrease in range(0, xscale[k] + 1):
+        for xincrease in range(1, xscale[k] + 1):
+            possiblesquare.append([point[0] + yincrease, point[1] + xincrease])
+            print(possiblesquare)
+            if possiblesquare.__contains__(other_tree_coords):
+                return possiblesquare
 
 
-print(squarePool(4, 2, [[2, 2], [3, 2]]))
-print(squarePool(5, 1, [[2, 4]]))
-print(squarePool(15, 8, [[4, 7], [4, 1], [14, 11], [10, 6], [13, 4], [4, 10], [10, 3], [9, 14]]))
-
-
+print(ceilingandright([8, 15], [[23, 30], [3, 28], [19, 19], [12, 21], [12, 9], [21, 3], [5, 5]]))
