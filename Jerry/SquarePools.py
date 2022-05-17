@@ -56,8 +56,8 @@ def checkMaxSquareOnRight(point, trees, size):
     endY = size
 
     for poolSize in range(maxDistanceToRight, 0, -1):
-        for y in range(startY, endY - poolSize + 1 + 1):
-            if doesSquareFit(poolSize, startX, y, treesToTheRight):
+        for startY in range(1, endY - poolSize + 1 + 1):
+            if doesSquareFit(poolSize, startX, startY, treesToTheRight):
                 return poolSize
 
     return 0
