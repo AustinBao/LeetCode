@@ -76,7 +76,7 @@ def doesSquareFit(squareSize, startX, startY, trees):
 
 print(checkMaxSquareOnRight([2, 4], [[4, 2]], 7))
 
-print(checkMaxSquareOnRight([2, 4], [[4, 2], [6, 3], [5, 5], [5, 6], [1, 4]], 7))
+print(checkMaxSquareOnRight([2, 4], [[4, 2], [6, 3], [5, 5], [5, 6], [2, 4]], 7))
 
 print(checkMaxSquareOnRight([2, 4], [[6, 3], [5, 5], [5, 6], [1, 4]], 7))
 
