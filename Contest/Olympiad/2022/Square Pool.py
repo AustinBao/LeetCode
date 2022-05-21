@@ -1,3 +1,7 @@
+import unittest
+from unittest import TestCase
+
+
 def squarePool(size, num_trees, coord_trees):
     grid = []
     for x in range(1, size + 1):
@@ -47,34 +51,38 @@ def checkMaxSquareOnTop(point, trees, size):
     size_of_initial_square = point[1]
     for size_of_square in range(size_of_initial_square, 0, -1):
         for x in range(1, size + 1):
-            if x + x + size_of_square - 1 > size:
+            if x + size_of_square - 1 > size:
                 continue
             if doesSquareFit(size_of_square, x, startY, treesToTheTop):
                 return size_of_square
     return 0
 
 
-def doesSquareFit(size_of_square, startX, startY, treesToTheTop):
-    endX = startX + size_of_square - 1
-    highestY = startY - size_of_square + 1
+def doesSquareFit(size_of_initial_square, startX, startY, treesToTheTop):
+    endX = startX + size_of_initial_square - 1
+    highestY = startY - size_of_initial_square + 1
     for tree in treesToTheTop:
         treeX = tree[0]
         treeY = tree[1]
-        if (startX <= treeX <= endX) and ( highestY<= treeY <= startY):
+        if (startX <= treeX <= endX) and (highestY <= treeY <= startY):
             return False
     return True
 
 
-print(checkMaxSquareOnTop([2, 5], [], 8))
+class TestMaxSqareAbove(TestCase):
 
-print(checkMaxSquareOnTop([2, 5], [[3,3], [6,3]], 8))
+    def test_no_trees(self):
+        self.assertEqual(first=5, second=checkMaxSquareOnTop([2, 5], [], 8))
 
-print(checkMaxSquareOnTop([2, 5], [[3,3], [6,3], [2,4], [4,4], [7,4]], 8))
+    def test_not_touching_point(self):
+        self.assertEqual(first=5, second=checkMaxSquareOnTop([2, 5], [[1, 3], [3, 3]], 8))
 
-print(checkMaxSquareOnTop([2, 5], [[3,2], [6,4]], 8))
+    def test_barrier(self):
+        self.assertEqual(first=1, second=checkMaxSquareOnTop([2, 5], [[7, 4], [5, 4], [3, 4], [1, 4]], 8))
 
-print(checkMaxSquareOnTop([2, 5], [[3,3], [6,2]], 8))
+    def test_square_above_barrier(self):
+        self.assertEqual(first=3, second=checkMaxSquareOnTop([2, 3], [[7, 4], [5, 4], [3, 4], [1, 4]], 8))
 
 
-
-
+if __name__ == '__main__':
+    unittest.main()
