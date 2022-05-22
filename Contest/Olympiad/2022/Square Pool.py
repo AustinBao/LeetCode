@@ -52,7 +52,7 @@ def checkMaxSquareOnTop(point, trees, size):
     for size_of_square in range(size_of_initial_square, 0, -1):
         for x in range(1, size + 1):
             if x + size_of_square - 1 > size:
-                continue
+                break
             if doesSquareFit(size_of_square, x, startY, treesToTheTop):
                 return size_of_square
     return 0
