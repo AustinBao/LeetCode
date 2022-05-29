@@ -1,3 +1,6 @@
+# https://www.cemc.uwaterloo.ca/contests/computing/2021/ccc/juniorEF.pdf
+
+
 def ArrangeBooks(shelf):
     counter = 0
 
