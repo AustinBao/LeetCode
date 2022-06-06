@@ -75,10 +75,11 @@ class TestCompress(TestCase):
         self.assertEqual(first="6 7 6 . 12 T", second=ColdCompress(1, ["777777......TTTTTTTTTTTT"]))
 
     def test_more_than_one_line(self):
-        self.assertEqual(first="3 + 3 = 4 ! 6 7 6 . 12 T 1 ( 2 A 2 B 1 C 1 ) 1 3 1 . 1 1 1 4 1 1 4 5", second=ColdCompress(4, ["+++===!!!!", "777777......TTTTTTTTTTTT", "(AABBC)", "3.1415555"]))
+        self.assertEqual(first="3 + 3 = 4 ! 6 7 6 . 12 T 1 ( 2 A 2 B 1 C 1 ) 1 3 1 . 1 1 1 4 1 1 4 5",
+                         second=ColdCompress(4, ["+++===!!!!", "777777......TTTTTTTTTTTT", "(AABBC)", "3.1415555"]))
 
     def test_one_multiple_symbol_twice(self):
-        self.assertEqual(first="3 + 2 +", second=ColdCompress(2, ["+++" , "++"]))
+        self.assertEqual(first="3 + 2 +", second=ColdCompress(2, ["+++", "++"]))
 
 
 if __name__ == '__main__':
