@@ -23,5 +23,5 @@ def containDuplicate2(nums):
 # print(containDuplicate([2, 3, 4, 1, 2]))
 
 print(containDuplicate2([3, 4, 1, 3, 2]))
-print(containDuplicate2([0,0, 9]))
+print(containDuplicate2([0, 9]))
 
