@@ -5,11 +5,13 @@ def thereyet(distances):
 
     r = []
     for i in range(0, 5):
+        line = [] # create a nested list so its easier to view
         for j in range(0, 5):
-            distance = c[j] - c[i]
+            distance = c[j] - c[i] # Check out python for an absolute function
             if distance < 0:
                 distance *= -1
-            r.append(distance)
+            line.append(distance)
+        r.append(line)
     return r
 
 
