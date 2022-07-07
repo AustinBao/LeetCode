@@ -3,7 +3,7 @@ def sameparking(n, day1, day2):
     for i in range(0, n):
         if day1[i] == "C" and day2[i] == "C":
             similar += 1
-        else:
+        else: # no need for this else statement
             continue
     return similar
 

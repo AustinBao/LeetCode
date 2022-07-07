@@ -29,7 +29,8 @@ def findyaxis(size, garden):
         yaxis.append(curr)
     return yaxis
 
-
+ # Seems like isrowvalid and iscolumbvalid have the same code, you could just rename the method and its
+ # variables a little so that you can just reuse them
 def isrowvalid(xaxislist):
     for rows in xaxislist:
         previous = rows[0]
