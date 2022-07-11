@@ -1,6 +1,6 @@
 def flipper(instructions):
-    grid = [[1,2],
-            [3,4]]
+    grid = [[1, 2],
+            [3, 4]]
 
     for letter in instructions:
         if letter == "H":
@@ -11,7 +11,5 @@ def flipper(instructions):
 
     return grid
 
+
 print(flipper("VHHHV"))
-
-
-
