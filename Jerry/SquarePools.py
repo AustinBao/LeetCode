@@ -1,7 +1,7 @@
 def squarePool(size, num_trees, coord_trees):
     grid = []
-    for x in range(1, size+1):
-        for y in range(1, size+1):
+    for x in range(1, size + 1):
+        for y in range(1, size + 1):
             grid.append([x, y])
 
     sizes = set()
@@ -73,8 +73,6 @@ def doesSquareFitRight(squareSize, startX, startY, trees):
             return False
     return True
 
-
-
 # print(checkMaxSquareOnRight([2, 4], [[4, 2], [6, 3], [5, 5], [5, 6], [2, 4]], 7))
 #
 # print(checkMaxSquareOnRight([2, 4], [[6, 3], [5, 5], [5, 6], [1, 4]], 7))
@@ -83,8 +81,6 @@ def doesSquareFitRight(squareSize, startX, startY, trees):
 #
 # print(checkMaxSquareOnRight([2, 4], [[3, 4], [3, 6], [4, 2], [6, 3], [5, 5], [5, 6], [1, 4]], 7))
 #
-#print(squarePool(4, 2, [[2, 2], [3, 2]]))
-#print(squarePool(5, 1, [[2, 4]]))
-#print(squarePool(15, 8, [[4, 7], [4, 1], [14, 11], [10, 6], [13, 4], [4, 10], [10, 3], [9, 14]]))
-
-
+# print(squarePool(4, 2, [[2, 2], [3, 2]]))
+# print(squarePool(5, 1, [[2, 4]]))
+# print(squarePool(15, 8, [[4, 7], [4, 1], [14, 11], [10, 6], [13, 4], [4, 10], [10, 3], [9, 14]]))

@@ -1,3 +1,6 @@
+# https://www.cemc.uwaterloo.ca/contests/computing/2021/ccc/juniorEF.pdf
+
+
 def modernArt(rows, columbs, num_brushes, brushes):
     table = []
     for i in range(0, rows):
